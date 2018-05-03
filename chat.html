@@ -1,0 +1,32 @@
+validation(){
+		let ifError = false;
+		const error= {
+			usernameError:'',
+			passwordError:''
+		};
+			if(this.state.username.indexOf("@")=== -1){
+				ifError=true;
+				error.usernameError="Require Valid Email";
+			}
+			if(this.state.password.length<5){
+				ifError=true;
+				error.passwordError="Password Length should be 8 characters";
+			}
+				this.setState({
+				...this.state,...error
+				});
+
+		return ifError;
+	};
+	handleSubmit(event){
+		const err= this.validation();
+		if(!err){
+			this.setState({			
+				usernameError:'',
+				passwordError:''
+			})
+		}
+		event.preventDefault();
+		localStorage.setItem("username", this.state.username);
+		localStorage.setItem("password", this.state.password);			
+		}
