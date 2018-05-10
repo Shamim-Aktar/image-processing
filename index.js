@@ -1,4 +1,4 @@
-var Peer=require('simple-peer')
+var Peer=require('simple-peer');
 
 navigator.webkitGetUserMedia({
             video: true,
